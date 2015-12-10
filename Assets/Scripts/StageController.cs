@@ -15,7 +15,7 @@ public class StageController : MonoBehaviour {
 	void Start () {
     }
 	
-    public void BuilStage()
+    public void BuildStage()
     {
         if (stageObjects == null) stageObjects = new List<GameObject>();
         stageObjects.ForEach(t => DestroyImmediate(t));

@@ -13,7 +13,7 @@ public class StageBuilderInspector : Editor {
         var stageBuilderScript = target as StageController;
 
         if (GUILayout.Button("Build Stage")) {
-            stageBuilderScript.BuilStage();
+            stageBuilderScript.BuildStage();
         }
 
     }
