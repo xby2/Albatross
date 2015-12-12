@@ -4,6 +4,9 @@ using System.Collections.Generic;
 
 public class StageController : MonoBehaviour {
 
+
+    // Container to store all stage tiles/walls
+    public GameObject stageContainer;
     public GameObject stageTilePrefab;
     public GameObject stageWallPrefab;
 
@@ -52,6 +55,11 @@ public class StageController : MonoBehaviour {
         z.transform.Rotate(0, 90, 0, Space.Self);
         z.transform.localScale = new Vector3(wallSize * 2, 5f, 0.1f);
 
+
+        foreach (var so in stageObjects)
+        {
+            so.transform.parent = stageContainer.transform;
+        }
     }
 
     // Update is called once per frame
