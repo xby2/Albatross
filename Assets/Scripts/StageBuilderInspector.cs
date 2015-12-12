@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
+#if UNITY_EDITOR
 using UnityEditor;
+
 
 
 [CustomEditor(typeof(StageController))]
@@ -18,3 +20,5 @@ public class StageBuilderInspector : Editor {
 
     }
 }
+#endif
+
