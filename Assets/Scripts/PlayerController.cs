@@ -1,14 +1,21 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using UnityEngine.UI;
 
-public class StormSpiritController : MonoBehaviour {
+public class PlayerController: MonoBehaviour {
+
+
+    public delegate void PlayerDead(int instaceID);
+    public static event PlayerDead OnPlayerDead;
 
     Animator animator;
     float speed = 0.10f;
     public float rspeed = 5.0f;
     public float h;
     public float v;
+    public Image icon;
+    public int lives = 3;
 
     public float rotationSpeed = 30;
     public facing currentFacing;
@@ -27,6 +34,7 @@ public class StormSpiritController : MonoBehaviour {
     void Start () {
         animator = GetComponent<Animator>();
         rotationSpeed = 30;
+       
     }
 	
 	// Update is called once per frame
@@ -73,6 +81,9 @@ public class StormSpiritController : MonoBehaviour {
 
     }
 
+    public void Die() {
+        lives--;
+    }
 
     void ChangeDirection(facing f) {
         if (f == currentFacing) return;
