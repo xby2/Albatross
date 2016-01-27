@@ -25,10 +25,10 @@ public class InputSceneController : MonoBehaviour {
         unregisteredInputs.Add(new KeyboardPlayerInput(KeyboardPlayerType.WASD));
 
         //Init controller input
-        //        unregisteredInputs.Add(new ControllerPlayerInput(1));
-        //        unregisteredInputs.Add(new ControllerPlayerInput(2));
-        //        unregisteredInputs.Add(new ControllerPlayerInput(3));
-        //        unregisteredInputs.Add(new ControllerPlayerInput(4));
+        unregisteredInputs.Add(new ControllerPlayerInput(1));
+        unregisteredInputs.Add(new ControllerPlayerInput(2));
+        unregisteredInputs.Add(new ControllerPlayerInput(3));
+        unregisteredInputs.Add(new ControllerPlayerInput(4));
 
         //Update the unregistered Name list
         unregisteredInputs.ForEach(input =>

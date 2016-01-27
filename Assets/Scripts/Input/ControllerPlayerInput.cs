@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System;
+using XboxCtrlrInput;
 
 /// <summary>
 /// Returns the player input for someone using a controller
@@ -28,21 +29,21 @@ public class ControllerPlayerInput : PlayerInput
 
     public bool getActionHold()
     {
-        throw new NotImplementedException();
+        return XCI.GetButton(XboxButton.A, controllerNumber);
     }
 
     public bool getActionPressDown()
     {
-        throw new NotImplementedException();
+        return XCI.GetButtonDown(XboxButton.A, controllerNumber);
     }
 
     public float getHorizontalAxis()
     {
-        throw new NotImplementedException();
+        return XCI.GetAxis(XboxAxis.LeftStickX, controllerNumber);
     }
 
     public float getVerticalAxis()
     {
-        throw new NotImplementedException();
+        return XCI.GetAxis(XboxAxis.LeftStickY, controllerNumber);
     }
 }
