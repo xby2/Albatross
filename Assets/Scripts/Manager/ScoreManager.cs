@@ -37,15 +37,13 @@ public class ScoreManager : MonoBehaviour {
     }
 
 
-    public void PlayerDie(int instanceID) { }
-
-
 
     // Update is called once per frame
     void Update() {
         foreach (var p in playerControllers)
         {
             var i = 0;
+			if (!playerIcons.ContainsKey(p.GetInstanceID())) continue;
             foreach (Image icon in playerIcons[p.GetInstanceID()]) {
 
                icon.enabled = (i < p.lives);

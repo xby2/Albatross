@@ -38,7 +38,7 @@ public class StageController : MonoBehaviour {
         // Build Walls
         var wallSize = size * 1.1f;
         var end = (wallSize * 1.1f / 2) - 0.5f;
-        var w = Instantiate(stageWallPrefab, new Vector3(end -0.4f, 0, -0.5f), new Quaternion()) as GameObject;
+        var w = Instantiate(stageWallPrefab, new Vector3(end -0.4f, 0, -0.6f), new Quaternion()) as GameObject;
         stageObjects.Add(w);
         w.transform.Rotate(0, 0, 0, Space.Self);
         w.transform.localScale = new Vector3(wallSize*2, 5f, 0.1f);
@@ -46,11 +46,15 @@ public class StageController : MonoBehaviour {
         stageObjects.Add(v);
         v.transform.Rotate(0, 0, 0, Space.Self);
         v.transform.localScale = new Vector3(wallSize * 2, 5f, 0.1f);
-        var x = Instantiate(stageWallPrefab, new Vector3(-0.4f, 0, end), new Quaternion()) as GameObject;
-        stageObjects.Add(x);
+        var x = Instantiate(stageWallPrefab, new Vector3(-0.4f, 0, end ), new Quaternion()) as GameObject;
+		stageObjects.Add(x);
         x.transform.Rotate(0, 90, 0, Space.Self);
         x.transform.localScale = new Vector3(wallSize * 2, 5f, 0.1f);
-        var z = Instantiate(stageWallPrefab, new Vector3(wallSize - 0.4f, 0, end), new Quaternion()) as GameObject;
+		x.transform.position += new Vector3(-0.4f, 0, 0.4f);
+		Debug.Log ("End " + end);
+		Debug.Log ("Z " + (end + 0.3f));
+
+		var z = Instantiate(stageWallPrefab, new Vector3(wallSize - 0.4f, 0, end), new Quaternion()) as GameObject;
         stageObjects.Add(z);
         z.transform.Rotate(0, 90, 0, Space.Self);
         z.transform.localScale = new Vector3(wallSize * 2, 5f, 0.1f);
