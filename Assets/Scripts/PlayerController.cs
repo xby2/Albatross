@@ -39,15 +39,17 @@ public class PlayerController: MonoBehaviour {
         animator = GetComponent<Animator>();
         rotationSpeed = 30;
 		inputManager = InputManager.getCurrentInputManager();
+		if (!inputManager.playerControls.ContainsKey(playerId)) return;
 		playerInput = inputManager.playerControls[playerId];
        
     }
 	
 	// Update is called once per frame
 	void Update () {
+	
         bool jump = Input.GetButtonDown("Jump");
-        animator.SetBool("jump", jump);
-       
+        
+		if (playerInput == null) return;
 		h = playerInput.getHorizontalAxis();
 		v =  playerInput.getVerticalAxis();
 
@@ -57,17 +59,24 @@ public class PlayerController: MonoBehaviour {
 
         transform.position += new Vector3(h * speed, 0, v * speed);
 
-        if (!jump)
-        {
-            if (Math.Abs(h) > 0 || Math.Abs(v) > 0)
-            {
-                animator.SetBool("isWalking", true);
-            }
-            else
-            {
-                animator.SetBool("isWalking", false);
-            }
-        }
+
+
+
+		if (animator != null ) {
+			animator.SetBool("jump", jump);
+			if (!jump)
+			{
+				if (Math.Abs(h) > 0 || Math.Abs(v) > 0)
+				{
+					animator.SetBool("isWalking", true);
+				}
+				else
+				{
+					animator.SetBool("isWalking", false);
+				}
+			}
+
+		}
 
 
 
