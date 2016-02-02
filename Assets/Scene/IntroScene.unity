@@ -161,7 +161,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1203466918}
-        m_MethodName: LoadGame
+        m_MethodName: LoadInputScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

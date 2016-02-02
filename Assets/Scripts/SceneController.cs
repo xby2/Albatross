@@ -15,4 +15,12 @@ public class SceneController : MonoBehaviour {
 	public void LoadIntro() {
 		Application.LoadLevel ("IntroScene");
 	}
+
+    /// <summary>
+    /// Changes the current scene to the scene to assign input
+    /// </summary>
+    public void LoadInputScene()
+    {
+        Application.LoadLevel("ControlsScene");
+    }
 }
