@@ -23,7 +23,7 @@ public class ScoreManager : MonoBehaviour {
             for (var i = 0; i < p.lives; i++)
             {
                 var icon = GameObject.Instantiate(p.icon, new Vector3(0, 0, 0), Quaternion.identity) as Image;
-                icon.transform.parent = gameObject.transform;
+                 icon.transform.SetParent(gameObject.transform);
                 icon.transform.localPosition = new Vector3(x, 0, 0);
                 x += ((float)icon.rectTransform.sizeDelta.x + 10);
                 if (!playerIcons.ContainsKey(playerID))
