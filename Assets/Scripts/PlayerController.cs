@@ -16,10 +16,14 @@ public class PlayerController: MonoBehaviour {
     public float v;
     public Image icon;
     public int lives = 3;
+	public int playerId = 0;
 
     public float rotationSpeed = 30;
     public facing currentFacing;
     public Vector3 dir;
+
+	private InputManager inputManager;
+	private PlayerInput playerInput;
 
     public enum facing
     {
@@ -34,6 +38,8 @@ public class PlayerController: MonoBehaviour {
     void Start () {
         animator = GetComponent<Animator>();
         rotationSpeed = 30;
+		inputManager = InputManager.getCurrentInputManager();
+		playerInput = inputManager.playerControls[playerId];
        
     }
 	
@@ -42,9 +48,8 @@ public class PlayerController: MonoBehaviour {
         bool jump = Input.GetButtonDown("Jump");
         animator.SetBool("jump", jump);
        
-        h = Input.GetAxis("Horizontal");
-        v = Input.GetAxis("Vertical");
-
+		h = playerInput.getHorizontalAxis();
+		v =  playerInput.getVerticalAxis();
 
         dir.x = h;
         dir.z = v;
