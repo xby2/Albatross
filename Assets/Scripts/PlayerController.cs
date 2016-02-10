@@ -3,6 +3,7 @@ using System.Collections;
 using System;
 using UnityEngine.UI;
 
+[RequireComponent(typeof(Animator))]
 public class PlayerController: MonoBehaviour {
 
 
