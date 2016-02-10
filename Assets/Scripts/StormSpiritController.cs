@@ -10,6 +10,9 @@ public class StormSpiritController : MonoBehaviour {
     public float h;
     public float v;
 
+    enum State { v, h, none };
+    private State previous;
+
     public float rotationSpeed = 30;
     public facing currentFacing;
     public Vector3 dir;
@@ -37,12 +40,24 @@ public class StormSpiritController : MonoBehaviour {
         h = Input.GetAxis("Horizontal");
         v = Input.GetAxis("Vertical");
 
+        if (h != 0 && (previous == State.h || previous == State.none)) 
+        {
+            dir.x = h;
+            transform.position += new Vector3(h * speed, 0, 0);
+            previous = State.h;
+        }
 
-        dir.x = h;
-        dir.z = v;
+        if (v != 0 && (previous == State.v || previous == State.none))
+        {
+            dir.z = v;
+            transform.position += new Vector3(0, 0, v * speed);
+            previous = State.v;
+        }
 
-
-        transform.position += new Vector3(h * speed, 0, v * speed);
+        if ((h == 0 && previous == State.h) || (v == 0 && previous == State.v))
+        {
+            previous = State.none;
+        }
 
         if (!jump)
         {
@@ -55,9 +70,6 @@ public class StormSpiritController : MonoBehaviour {
                 animator.SetBool("isWalking", false);
             }
         }
-
-
-
 
         if (dir != Vector3.zero)
         {
