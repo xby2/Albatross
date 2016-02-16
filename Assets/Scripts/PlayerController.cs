@@ -52,15 +52,11 @@ public class PlayerController: MonoBehaviour {
 		if (playerInput == null) return;
 		h = playerInput.getHorizontalAxis();
 		v =  playerInput.getVerticalAxis();
-
         dir.x = h;
         dir.z = v;
 
 
         transform.position += new Vector3(h * speed, 0, v * speed);
-
-
-
 
 		if (animator != null ) {
 			animator.SetBool("jump", jump);
@@ -78,9 +74,6 @@ public class PlayerController: MonoBehaviour {
 
 		}
 
-
-
-
         if (dir != Vector3.zero)
         {
             transform.rotation = Quaternion.Slerp(
@@ -89,9 +82,6 @@ public class PlayerController: MonoBehaviour {
                 Time.deltaTime * rotationSpeed
             );
         }
-
-
-
 
     }
 

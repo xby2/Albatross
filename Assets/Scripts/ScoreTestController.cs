@@ -14,8 +14,5 @@ public class ScoreTestController : MonoBehaviour {
             p.Die();
         }
 
-
-
-        ScoreManager.score += 10;
     }
 }

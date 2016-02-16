@@ -4,22 +4,24 @@ using UnityEngine.UI;
 using System.Collections.Generic;
 
 public class ScoreManager : MonoBehaviour {
-    public static int score;
-
     PlayerController[] playerControllers;
     Dictionary<int, List<Image>> playerIcons;
-    Text text;
+    Text counterText;
+
 
     // Use this for initialization
     void Start() {
+		if (PlayerSpawnerController.playerControllers == null) return;
         playerIcons = new Dictionary<int, List<Image>>();
-        text = GetComponent<Text>();
-        score = 0;
-        this.playerControllers = (PlayerController[])FindObjectsOfType<PlayerController>();
+		counterText = GetComponent<Text>();
+		playerControllers = PlayerSpawnerController.playerControllers.ToArray();
+		// Get all player instances
+        //this.playerControllers = (PlayerController[])FindObjectsOfType<PlayerController>();
+		var x = 0f;
         foreach (var p in playerControllers)
         {
             var playerID = p.GetInstanceID();
-            var x = 0f;
+            
             for (var i = 0; i < p.lives; i++)
             {
                 var icon = GameObject.Instantiate(p.icon, new Vector3(0, 0, 0), Quaternion.identity) as Image;
@@ -40,6 +42,7 @@ public class ScoreManager : MonoBehaviour {
 
     // Update is called once per frame
     void Update() {
+		if (playerControllers == null) Start ();
         foreach (var p in playerControllers)
         {
             var i = 0;
