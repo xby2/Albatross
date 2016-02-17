@@ -3,11 +3,17 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 
+[RequireComponent(typeof(Text))]
 public class TimeManager : MonoBehaviour {
 
+    /// <summary>
+    /// Time left in the match in seconds
+    /// </summary>
 	public float timeLeft;
+
 	private Text timeText;
-	// Use this for initialization
+	
+    // Use this for initialization
 	void Start () {
 		timeText = GetComponent<Text>();
 		timeLeft = 100f;
@@ -20,9 +26,7 @@ public class TimeManager : MonoBehaviour {
 			timeText.text = "Game Over";
 			return;
 		}
-		timeText.text = timeLeft.ToString();
+		timeText.text = timeLeft.ToString("F0");
 		timeLeft -= Time.deltaTime;
-
-
 	}
 }
