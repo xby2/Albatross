@@ -97,6 +97,15 @@ public class PlayerController: MonoBehaviour {
         this.transform.position = this.spawnPoint.transform.position;
     }
 
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.name == "FloorPlane") {
+			Die ();
+            Respawn();
+        }
+
+    }
+
     void ChangeDirection(facing f) {
         if (f == currentFacing) return;
         transform.localEulerAngles = new Vector3(0, (float)f, 0);
