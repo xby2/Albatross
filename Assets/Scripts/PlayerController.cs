@@ -25,6 +25,7 @@ public class PlayerController: MonoBehaviour {
     public float rotationSpeed = 30;
     public facing currentFacing;
     public Vector3 dir;
+    public GameObject spawnPoint;
 
 	private InputManager inputManager;
 	private PlayerInput playerInput;
@@ -88,6 +89,21 @@ public class PlayerController: MonoBehaviour {
 
     public void Die() {
         lives--;
+    }
+
+    public void Respawn()
+    {
+        // Move player to the spawn point
+        this.transform.position = this.spawnPoint.transform.position;
+    }
+
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.name == "FloorPlane") {
+			Die ();
+            Respawn();
+        }
+
     }
 
     void ChangeDirection(facing f) {
